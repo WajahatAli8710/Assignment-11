@@ -50,7 +50,6 @@ main .right .bottom {
   grid-template-areas: "b-left b-center b-right";
 }
 main .right .bottom .b-left {
-  background-color: rgb(20, 31, 25);
   grid-area: b-left;
   background-image: url("./images/pic-3.avif");
   background-position: center;

@@ -60,7 +60,6 @@ main {
       grid-template-areas: "b-left b-center b-right";
 
       .b-left {
-        background-color: rgb(20, 31, 25);
         grid-area: b-left;
         @include image-style(
           "./images/pic-3.avif",
