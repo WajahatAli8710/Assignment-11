@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+  color: #fff;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+@mixin image-style($url, $postion, $size, $radius, $border) {
+  background-image: url($url);
+  background-position: $postion;
+  background-size: $size;
+  border-radius: $radius;
+  border: $border;
+}
+@mixin grid-style($columns, $rows, $gap) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  grid-gap: $gap;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  @include grid-style(1fr 2fr, 1fr, 0.5rem);
+  padding: 0.5rem;
+
+  .left {
+    @include image-style(
+      "./images/pic-1.avif",
+      center,
+      cover,
+      0.5rem,
+      3px solid #000
+    );
+  }
+
+  .right {
+    @include grid-style(1fr, 2fr 1fr, 0.5rem);
+
+    .top {
+      @include image-style(
+        "./images/pic-2.avif",
+        center,
+        cover,
+        0.5rem,
+        3px solid #000
+      );
+      border-radius: 20px;
+    }
+
+    .bottom {
+      @include grid-style(repeat(3, 1fr), 1fr, 0.5rem);
+      grid-template-areas: "b-left b-center b-right";
+
+      .b-left {
+        background-color: rgb(20, 31, 25);
+        grid-area: b-left;
+        @include image-style(
+          "./images/pic-3.avif",
+          center,
+          cover,
+          0.5rem,
+          3px solid #000
+        );
+      }
+
+      .b-center {
+        grid-area: b-center;
+        @include image-style(
+          "./images/pic-4.avif",
+          center,
+          cover,
+          0.5rem,
+          3px solid #000
+        );
+      }
+
+      .b-right {
+        grid-area: b-right;
+        @include image-style(
+          "./images/pic-5.avif",
+          center,
+          cover,
+          0.5rem,
+          3px solid #000
+        );
+      }
+    }
+  }
+}
+@media (max-width: 800px) {
+  main {
+    @include grid-style(1fr, repeat(2, 1fr), 0.5rem);
+  }
+
+  .bottom {
+    grid-template-rows: auto auto auto;
+    @include grid-style(repeat(3, 1fr), 0, 0.5rem);
+  }
+}
